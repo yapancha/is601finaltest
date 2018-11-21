@@ -9,7 +9,8 @@
                         {{--<a class="btn btn-primary float-right" href="{{ route('questions.create') }}">--}}
                         <a class="btn btn-primary float-right" href="#">
 
-                        Create a Question
+                            Create a Question
+
                         </a>
 
                         <div class="card-body">
@@ -35,6 +36,7 @@
                                                     <a class="btn btn-primary float-right" href="#">
 
                                                     View
+
                                                     </a>
                                                 </p>
                                             </div>
