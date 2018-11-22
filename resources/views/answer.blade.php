@@ -15,7 +15,6 @@
                         </button>
                         {!! Form::close() !!}
                         <a class="btn btn-primary float-right" href="{{ route('answers.edit',['question_id'=> $question, 'answer_id'=> $answer->id, ])}}">
-                        <a class="btn btn-primary float-right" href="#">
 
                         Edit Answer
                         </a>
