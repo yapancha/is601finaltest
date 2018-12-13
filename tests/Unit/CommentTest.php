@@ -27,6 +27,7 @@ class CommentTest extends TestCase
         $comment->user()->associate($user);
         $comment->question()->associate($question);
         $comment->answer()->associate($answer);
-        $this->assertTrue($comment->save());a
+        $this->assertTrue($comment->save());
+
     }
 }
