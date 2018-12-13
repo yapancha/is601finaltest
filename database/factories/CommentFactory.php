@@ -2,8 +2,12 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+
+$factory->define(App\Comment::class, function (Faker $faker) {
     return [
-        //
+
+        'body'=> $faker->paragraph($nbSentence = 1, $variableNbSentence = true),
+
+
     ];
 });

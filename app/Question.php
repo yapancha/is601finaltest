@@ -14,4 +14,7 @@ class Question extends Model
     public function answers(){
         return $this->hasMany('App\Answer');
     }
+    public function comments(){
+        return $this->hasMany('App\Comment');
+    }
 }

@@ -23,6 +23,7 @@ class CommentTest extends TestCase
         $answer = factory(\App\Answer::class)->make();
         $answer->user()->associate($user);
         $answer->question()->associate($question);
+        $answer->save();
         $comment = factory(\App\Comment::class)-> make();
         $comment->user()->associate($user);
         $comment->question()->associate($question);
