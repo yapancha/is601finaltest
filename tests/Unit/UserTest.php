@@ -31,5 +31,9 @@ class UserTest extends TestCase
         $user = factory(\App\User::class)->make();
         $this->assertTrue(is_object($user->answers()->get()));
     }
+    public function testComments(){
+        $user = factory(\App\User::class)->make();
+        $this->assertTrue(is_object($user->comments()->get()));
+    }
 
 }
