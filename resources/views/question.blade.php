@@ -10,8 +10,7 @@
                     <div class="card-body">
 
                         {{$question->body}}
-                        {{Auth::user()->id}}
-                        {{$question->user->id}}
+
                     </div>
                     @if(Auth::user()->id === $question->user->id)
                     <div class="card-footer">

@@ -11,7 +11,7 @@
                             {!! Form::model($comment, ['route' => ['comments.store', $question,$answer], 'method' => 'post']) !!}
 
                         @else()
-                            {!! Form::model($comment, ['route' => ['comments.update', $question, $answer], 'method' => 'patch']) !!}
+                            {!! Form::model($comment, ['route' => ['comments.update', $question, $answer,$comment], 'method' => 'patch']) !!}
                         @endif
                         <div class="form-group">
                             {!! Form::label('body', 'Body') !!}
