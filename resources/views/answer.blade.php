@@ -39,7 +39,11 @@
                                 <strong>{{$comment->body}}</strong>
                                 @if($comment->user->profile)
                                     <div class="text-muted">
-                                     By: {{$comment->user->profile->fname}}
+                                        @if($comment->user->id === Auth::user()->id)
+                                            By: You
+                                        @else
+                                            By: {{$comment->user->profile->fname}}
+                                        @endif
                                     </div>
                                 @else
                                     <div class="text-muted">
@@ -47,11 +51,11 @@
                                     </div>
                                 @endif
                                 @if(Auth::user()->id === $comment->user->id)
-                                    {{ Form::open(['method'  => 'DELETE', 'route' => ['answers.destroy', $question, $answer->id]])}}
+                                    {{ Form::open(['method'  => 'DELETE', 'route' => ['comments.destroy', $question, $answer->id,$comment->id]])}}
                                     <button class="btn btn-danger float-right mr-2" value="submit" type="submit" id="submit">Delete
                                     </button>
                                     {!! Form::close() !!}
-                                    <a class="btn btn-primary float-right" href="{{ route('answers.edit',['question_id'=> $question, 'answer_id'=> $answer->id, ])}}">
+                                    <a class="btn btn-primary float-right" href="{{ route('comments.edit',['question_id'=> $question, 'answer_id'=> $answer->id,'comment_id'=> $comment->id ])}}">
                                         Edit
                                     </a>
                                 @endif
