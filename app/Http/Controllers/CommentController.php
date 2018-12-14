@@ -5,6 +5,7 @@ use Auth;
 use App\Comment;
 use App\Answer;
 use App\Question;
+use DemeterChain\C;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -76,9 +77,11 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($question, $answer, $comment)
     {
-        //
+        $comment = Comment::find($comment);
+        $edit = TRUE;
+        return view('commentForm',['comment' => $comment,'edit' => $edit, 'question' =>$question, 'answer' => $answer]);
     }
 
     /**
@@ -88,9 +91,19 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $question, $answer, $comment)
     {
-        //
+        $input = $request->validate([
+            'body' => 'required|min:5',
+        ], [
+            'body.required' => 'Body is required',
+            'body.min' => 'Body must be at least 5 characters',
+        ]);
+
+        $comment = Comment::find($comment);
+        $comment->body = $request->body;
+        $comment->save();
+        return redirect()->route('answers.show',['question_id' => $question, 'answer_id' => $answer])->with('message', 'Updated');
     }
 
     /**
