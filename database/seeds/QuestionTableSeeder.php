@@ -13,7 +13,7 @@ class QuestionTableSeeder extends Seeder
     {
 
         $users = App\User::all();
-        for($i=0; $i <= 15; $i++){
+        for($i=0; $i <= 4; $i++){
             $users->each(function ($user){
                 $question = factory(App\Question::class)->make();
                 $question->user()->associate($user);

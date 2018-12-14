@@ -13,7 +13,7 @@
                         {{Auth::user()->id}}
                         {{$question->user->id}}
                     </div>
-                    @if(Auth::user()->id === $question->user->id
+                    @if(Auth::user()->id === $question->user->id)
                     <div class="card-footer">
                         <a class="btn btn-primary float-right"
                            href="{{ route('questions.edit',['id'=> $question->id])}}">
