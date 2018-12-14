@@ -31,7 +31,6 @@ Route::patch('/questions/{question_id}/answer/{answer_id}', 'AnswerController@up
 Route::delete('/questions/{question_id}/answer/{answer_id}', 'AnswerController@destroy')->name('answers.destroy');
 
 Route::get('/questions/{question_id}/{answer_id}/comments/create', 'CommentController@create')->name('comments.create');
-//Route::get('/questions/{question_id}/answers/{answer_id}', 'AnswerController@show')->name('answers.show');
 Route::get('/questions/{question_id}/{answer_id}/{comment_id}/edit', 'CommentController@edit')->name('comments.edit');
 Route::post('/questions/{question_id}/{answer_id}/comments/add', 'CommentController@store')->name('comments.store');
 Route::patch('/questions/{question_id}/{answer_id}/{comment_id}/update', 'CommentController@update')->name('comments.update');
@@ -41,11 +40,3 @@ Route::resources([
     'questions' => 'QuestionController',
 ]);
 
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
