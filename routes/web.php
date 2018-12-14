@@ -32,10 +32,10 @@ Route::delete('/questions/{question_id}/answer/{answer_id}', 'AnswerController@d
 
 Route::get('/questions/{question_id}/{answer_id}/comments/create', 'CommentController@create')->name('comments.create');
 //Route::get('/questions/{question_id}/answers/{answer_id}', 'AnswerController@show')->name('answers.show');
-//Route::get('/questions/{question_id}/answers/{answer_id}/edit', 'AnswerController@edit')->name('answers.edit');
+Route::get('/questions/{question_id}/{answer_id}/{comment_id}/edit', 'AnswerController@edit')->name('answers.edit');
 Route::post('/questions/{question_id}/{answer_id}/comments/add', 'CommentController@store')->name('comments.store');
 //Route::patch('/questions/{question_id}/answer/{answer_id}', 'AnswerController@update')->name('answers.update');
-//Route::delete('/questions/{question_id}/answer/{answer_id}', 'AnswerController@destroy')->name('answers.destroy');
+Route::delete('/questions/{question_id}/{answer_id}/comments/{comment_id}', 'CommentController@destroy')->name('comments.destroy');
 
 Route::resources([
     'questions' => 'QuestionController',
