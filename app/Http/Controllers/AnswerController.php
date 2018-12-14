@@ -34,6 +34,7 @@ class AnswerController extends Controller
      */
     public function store(Request $request, $question)
     {
+
         $input = $request->validate([
             'body' => 'required|min:5',
         ], [
@@ -57,7 +58,7 @@ class AnswerController extends Controller
     public function show($question,  $answer)
     {
         $answer = Answer::find($answer);
-        return view('answer')->with(['answer' => $answer, 'question' => $question]);
+        return view('answer')->with(['question' => $question,'answer' => $answer]);
     }
     /**
      * Show the form for editing the specified resource.

@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
+use App\Comment;
+use App\Answer;
+use App\Question;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -21,9 +24,12 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($question, $answer)
     {
-        //
+
+        $comment = new Comment;
+        $edit = FALSE;
+        return view('commentForm', ['comment' => $comment,'edit' => $edit, 'question' =>$question, 'answer' => $answer  ]);
     }
 
     /**
@@ -32,9 +38,25 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $question, $answer)
     {
-        //
+        $input = $request->validate([
+            'body' => 'required|min:5',
+        ], [
+            'body.required' => 'Body is required',
+            'body.min' => 'Body must be at least 5 characters',
+        ]);
+        $input = request()->all();
+        $question = Question::find($question);
+        $answer = Answer::find($answer);
+
+        $comment = new Comment($input);
+
+        $comment->user()->associate(Auth::user());
+        $comment->question()->associate($question);
+        $comment->answer()->associate($answer);
+        $comment->save();
+        return redirect()->route('answers.show',['question_id' => $question, 'answer_id' => $answer->id])->with('message', 'Saved');
     }
 
     /**
