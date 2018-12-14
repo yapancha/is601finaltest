@@ -1,6 +1,6 @@
 # FAQ PROJECT - Comment Feature
 
->This repo is a continuation of the main FAQ project with a new branch "comments"
+>This repo is a continuation of the main FAQ project with a new branch "comments".
 >If you want to find the original project, please visit [FAQ PROJECT](https://github.com/yapancha/faq)
 
 ### Epic
