@@ -1,7 +1,7 @@
 # FAQ PROJECT - Comment Feature
 
 >This repo is a continuation of the main FAQ project with a new branch "comments"
-If you want to find the original project, please visit [FAQ PROJECT](https://github.com/yapancha/faq)
+>If you want to find the original project, please visit [FAQ PROJECT](https://github.com/yapancha/faq)
 
 ### Epic
  -  In this feature, users can login in the system and view the list of all questions. User can open a question, and see the list of answers. Then they can open one of the answers and see the list of comments if there is any. They can also add a new comment to the answer. They can also edit/delete their own comments. 
