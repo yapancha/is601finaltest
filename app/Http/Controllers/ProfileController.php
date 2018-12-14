@@ -1,13 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\User;
 use App\Profile;
-use App\Question;
-
+use App\User;
 class ProfileController extends Controller
 {
     /**
@@ -19,7 +15,6 @@ class ProfileController extends Controller
     {
         //
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -31,7 +26,6 @@ class ProfileController extends Controller
         $edit = FALSE;
         return view('profileForm', ['profile' => $profile,'edit' => $edit  ]);
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -55,7 +49,6 @@ class ProfileController extends Controller
         $profile->save();
         return redirect()->route('home')->with('message', 'Profile Created');
     }
-
     /**
      * Display the specified resource.
      *
@@ -68,7 +61,6 @@ class ProfileController extends Controller
         $profile = $user->profile;
         return view('profile')->with('profile', $profile);
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -82,7 +74,6 @@ class ProfileController extends Controller
         $edit = TRUE;
         return view('profileForm', ['profile' => $profile, 'edit' => $edit ]);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -100,14 +91,12 @@ class ProfileController extends Controller
             'lname.required' => ' Last is required',
         ]);
         $profile = Profile::find($profile);
-        $profile->fname = $request->fname;
+        $profile->fname = $request->lname;
         $profile->lname = $request->lname;
         $profile->body = $request->body;
         $profile->save();
         return redirect()->route('home')->with('message', 'Updated Profile');
     }
-
-
     /**
      * Remove the specified resource from storage.
      *
