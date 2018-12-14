@@ -29,6 +29,6 @@ class CommentTest extends TestCase
         $comment->question()->associate($question);
         $comment->answer()->associate($answer);
         $this->assertTrue($comment->save());
-
+        $this->assertTrue($comment->delete());
     }
 }
