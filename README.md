@@ -30,5 +30,5 @@ Here are a few changes made on the original FAQ project:
 * Display the name of the user who wrote the comment. 
 
 ### Heroku
-Please visit the app hosted on [Heroku](https://is601faqcomments.herokuapp.com/)
-Follow all the user stories to and look at the additional features as well. 
+Please visit the app hosted on [Heroku](https://is601faqcomments.herokuapp.com/).
+Follow all the user stories and look at the additional features as well. 
