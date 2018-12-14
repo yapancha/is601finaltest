@@ -7,8 +7,9 @@
                 <div class="card">
                     <div class="card-header "><h3>Answer</h3></div>
                     <div class="card-body">
-                        {{$answer->body}}
+                        <strong>{{$answer->body}}</strong>
                     </div>
+
                     @if(Auth::user()->id === $answer->user->id)
 
                     <div class="card-footer">
@@ -23,14 +24,29 @@
                     @endif
 
                     <div class="card">
-                        <div class="card-header"><strong>Comments</strong></div>
+                        <div class="card-header">
+                            <strong>Comments</strong>
+                                <a class="btn btn-primary float-right"
+                                   href="{{ route('comments.create', ['question_id'=> $question, 'answer_id'=> $answer->id])}}">
+                                    Add Comment
+                                </a>
+                        </div>
 
 
                     @forelse($answer->comments as $comment)
                         <div class="card-header">
                             <div class="card-body text-muted">
-                                {{$comment->body}}
-                                {{--@if(Auth::user()->id === $comment->user->id)--}}
+                                <strong>{{$comment->body}}</strong>
+                                @if($comment->user->profile)
+                                    <div class="text-muted">
+                                     By: {{$comment->user->profile->fname}}
+                                    </div>
+                                @else
+                                    <div class="text-muted">
+                                        By: User profile not created
+                                    </div>
+                                @endif
+                                @if(Auth::user()->id === $comment->user->id)
                                     {{ Form::open(['method'  => 'DELETE', 'route' => ['answers.destroy', $question, $answer->id]])}}
                                     <button class="btn btn-danger float-right mr-2" value="submit" type="submit" id="submit">Delete
                                     </button>
@@ -38,7 +54,7 @@
                                     <a class="btn btn-primary float-right" href="{{ route('answers.edit',['question_id'=> $question, 'answer_id'=> $answer->id, ])}}">
                                         Edit
                                     </a>
-                                {{--@endif--}}
+                                @endif
                             </div>
                         </div>
                     @empty
