@@ -99,8 +99,13 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($question, $answer,$comment)
     {
-        //
+        $question = Question::find($question);
+        $answer = Answer::find($answer);
+        $comment = Comment::find($comment);
+
+        $comment->delete();
+        return redirect()->route('answers.show',['question_id' => $question, 'answer_id' => $answer->id])->with('message', 'Delete');
     }
 }
